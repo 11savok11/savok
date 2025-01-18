@@ -1,1 +1,7 @@
+import pizzabot
+bot - pizzabot.Pizzabot("8075383549:AAGSSwar3JLRUVHPLgDCJj3ofyfoSRhdjIo")
+@bot.message_handler(commands=['start'])
+def main(message): 
+  bot.send_message(message.chat.id, 'Здраствуйте, я телеграмм бот пиццеррии, закажите что нибудь из моего списка.')
 
+bot.polling(none_stop=True)
