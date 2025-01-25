@@ -6,3 +6,9 @@ def main(message):
 
 bot.polling(none_stop=True)
 # https://www.youtube.com/watch?v=dQw4w9WgXcQ
+async def send_pizza_margarita_photo(message: types.Message):
+    photo_path = 'pizza_margarita.jpg'  
+    caption = "Наши повара готовят пиццу «Маргариту» из томатов и соуса «Помадор». Перед запеканием, всё обильно посыпается сыром «Моцареллой», Поэтому, когда достаете кусок - сыр растягивается на всю длину. Помните, как в мультике про черепашек ниндзя? Вот также будет:)" 
+
+
+
