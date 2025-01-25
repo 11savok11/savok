@@ -6,9 +6,20 @@ def main(message):
 
 bot.polling(none_stop=True)
 # https://www.youtube.com/watch?v=dQw4w9WgXcQ
+@dp.message_handler(commands=['Pizza_margarita', 'margarita'])
 async def send_pizza_margarita_photo(message: types.Message):
+    await send_pizza_margarita_photo(message)
     photo_path = 'pizza_margarita.jpg'  
     caption = "Наши повара готовят пиццу «Маргариту» из томатов и соуса «Помадор». Перед запеканием, всё обильно посыпается сыром «Моцареллой», Поэтому, когда достаете кусок - сыр растягивается на всю длину. Помните, как в мультике про черепашек ниндзя? Вот также будет:)" 
 
+@dp.message_handler(commands=['Pizza_pepperoni', 'pepperoni'])
+async def handle_pizza_pepperoni_command(message: types.Message):
+    await send_pizza_pepperoni_photo(message)
+    photo_path = 'pizza_pepperoni.jpg'  
+    caption = "Пицца «Пепперони» – это классическое и одно из самых популярных блюд итальянской кухни. Она отличается аппетитным сочетанием хрустящего теста, ароматного томатного соуса, обильного количества сыра и пикантных пепперони – итальянских колбасок из острой свинины."
 
-
+@dp.message_handler(commands=['Pizza_4_Cheese', '4cheese'])
+async def send_pizza_4_chesee_photo(message: types.Message):
+    await send_pizza_4_chesee_photo(message)
+    photo_path = 'pizza_4_chesee.jpg'  
+    caption = "Пицца «Четыре сыра» — это так называемая белая пицца, так как в неё не кладут помидоры или томатный соус. Начинку пиццы составляет исключительно сыр: мягкая рикотта, плавящаяся моцарелла, твёрдый ароматный пармезан и голубая горгонзола с плесенью."
