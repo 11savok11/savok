@@ -3,69 +3,78 @@ bot - pizzabot.Pizzabot("API KEY")
 @bot.message_handler(commands=['start'])
 def main(message): 
   bot.send_message(message.chat.id, 'Здраствуйте, я телеграмм бот пиццеррии, сделайте заказ из моего списка.')
-Menu
-Pizza list
-# https://www.youtube.com/watch?v=dQw4w9WgXcQ
+@bot.message_handler(func=lambda message: message.text.lower() == 'меню')
+def show_menu(message):
+    menu = "1.1. Пеперони\\n1.2. Четыре Сыра\\n1.3. Гавайская\\n1.4. Неальская\\n1.5. Фембойская\\ Напишите номер вашей пиццы для заказа."
+    bot.send_message(message.chat.id, menu)
 @dp.message_handler(commands=['Pizza_margarita', 'margarita'])
 async def send_pizza_margarita_photo(message: types.Message):
     await send_pizza_margarita_photo(message)
     photo_path = 'pizza_margarita.jpg'  
     caption = "Наши повара готовят пиццу «Маргариту» из томатов и соуса «Помадор». Перед запеканием, всё обильно посыпается сыром «Моцареллой», Поэтому, когда достаете кусок - сыр растягивается на всю длину. Помните, как в мультике про черепашек ниндзя? Вот также будет:)" 
 
-@dp.message_handler(commands=['Pizza_pepperoni', 'pepperoni'])
+@dp.message_handler(commands=['Pizza_pepperoni', '1.1'])
 async def handle_pizza_pepperoni_command(message: types.Message):
     await send_pizza_pepperoni_photo(message)
     photo_path = 'pizza_pepperoni.jpg'  
     caption = "Пицца «Пепперони» – это классическое и одно из самых популярных блюд итальянской кухни. Она отличается аппетитным сочетанием хрустящего теста, ароматного томатного соуса, обильного количества сыра и пикантных пепперони – итальянских колбасок из острой свинины."
 
-@dp.message_handler(commands=['Pizza_4_Cheese', '4cheese'])
+@dp.message_handler(commands=['Pizza_4_Cheese', '1.2'])
 async def send_pizza_4_chesee_photo(message: types.Message):
     await send_pizza_4_chesee_photo(message)
     photo_path = 'pizza_4_chesee.jpg'  
     caption = "Пицца «Четыре сыра» — это так называемая белая пицца, так как в неё не кладут помидоры или томатный соус. Начинку пиццы составляет исключительно сыр: мягкая рикотта, плавящаяся моцарелла, твёрдый ароматный пармезан и голубая горгонзола с плесенью."
 
-@dp.message_handler(commands=['Pizza_Gavaii', 'gavaii'])
+@dp.message_handler(commands=['Pizza_Gavaii', '1.3'])
 async def handle_pizza_Gavaii_command(message: types.Message):
     await send_pizza_Gavaii_photo(message)
     photo_path = 'pizza_Gavaii.jpg' 
     caption ="Гавайская пицца — это разновидность пиццы, в которой используется сочетание традиционных ингредиентов и ананаса."
 
-@dp.message_handler(commands=['Pizza_Neapol', 'neapol'])
+@dp.message_handler(commands=['Pizza_Neapol', '1.4'])
 async def handle_pizza_Neapol_command(message: types.Message):
   await send_pizza_Neapol_command(message: types.Message):
   photo_path = 'pizza_Neapol.jpg' 
   caption ="Неаполитанская пицца — это классическое итальянское блюдо, состоящее из тонкого хрустящего теста, сочной томатной пасты, а также ароматных трав и свежих ингредиентов."
 
-@dp.message_handler(commands=['Pizza_Femboy', 'femboy'])
+@dp.message_handler(commands=['Pizza_Femboy', '1.5'])
 async def handle_pizza_Femboy_command(message: types.Message):
   await send_pizza_Femboy_command(message: types.Message):
   photo_path = 'pizza_Femboy.jpg' 
   caption ="В мире, где вкусы и стили пересекаются, приходит пицца, способная покорить сердца — и не только мужчин! Наши фембой-пиццы сочетают в себе изысканный аромат и яркие цвета, удовлетворяя даже самых требовательных гурманов. Представьте себе нежное тесто, как бархат, обволакивающее множество начинок: от классического томатного соуса и моцареллы до уникальных авторских комбинаций с трюфельным маслом и авокадо.."
-
+@bot.message_handler(func=lambda message: message.text.isdigit())
+def take_order(message):
+    pizza_choice = int(message.text)
+    if pizza_choice in [1.1, 1.2, 1.3, 1.4, 1.5]:
+        orders[message.chat.id] = pizza_choice
+        bot.send_message(message.chat.id, "Ваш заказ принят! Спасибо!")
+    else:
+        bot.send_message(message.chat.id, "Пожалуйста, выберите корректный номер пиццы.")
 Sushi
-@dp.message_handler(commands=['Sushi_kalifornia', 'kalifornia'])
+@dp.message_handler(commands=['Sushi_kalifornia', '2.1'])
 async def handle_sushi_kalifornia_command(message: types.Message):
   await send_sushi_kalifornia_command(message: types.Message):
  caption ="Погрузитесь в мир кулинарных наслаждений с суши Калифорния! Эти изысканные роллы, наполненные свежайшим лососем, нежным авокадо и хрустящими овощами, станут ярким акцентом вашего обеда или ужина. Каждый кусочек – это симфония вкусов, где морская свежесть встречается с земным уютом. "
 
-@dp.message_handler(commands=['Sushi_samurai', 'samurai'])
+@dp.message_handler(commands=['Sushi_samurai', '2.2'])
 async def handle_sushi_samurai_command(message: types.Message):
   await send_sushi_samurai_command(message: types.Message):
  caption ="В мире гастрономии, где каждый вкус — это уникальная история, роллы "Самурай" представляют собой истинное искусство. Вдохновленные многовековыми традициями японской кухни и современными кулинарными технологиями, наши роллы сияют яркими цветами и насыщенными ароматами."
 
-@dp.message_handler(commands=['Sushi_savok', 'savok'])
+@dp.message_handler(commands=['Sushi_savok', '2.3'])
 async def handle_sushi_savok_command(message: types.Message):
   await send_sushi_savok_command(message: types.Message):
 caption ="В ритме современных гастрономических ожиданий горячие роллы Савок становятся настоящим открытием для истинных ценителей японской кухни. Нежное сочетание свежайших морепродуктов и ярких овощей вскоре покорит ваше сердце и вкусовые рецепторы. Наша уникальная рецептура, в которой переплетается традиционное искусство приготовления с креативными нотами, предлагает вам насладиться каждой единицей."
 
-@dp.message_handler(commands=['Sushi_sakemyaki', 'sakemyaki'])
+@dp.message_handler(commands=['Sushi_sakemyaki', '2.4'])
 async def handle_sushi_sakemyaki_command(message: types.Message):
   await send_sushi_sakemyaki_command(message: types.Message):
 bot.polling(none_stop=True)
 caption ="Закажите роллы сакэмяки и откройте для себя уникальный мир японской кухни, где каждая деталь вобрала в себя гармонию вкуса и эстетики. Наши роллы — это не просто блюда, а настоящие кулинарные произведения искусства. Сочетая свежие морепродукты, хрустящие овощи и ароматный рис, мы предлагаем вам насладиться идеальным балансом текстур и вкусов."
 
-@dp.message_handler(commands=['Sushi_hellokitty', 'hellokitty'])
+@dp.message_handler(commands=['Sushi_hellokitty', '2.5'])
 async def handle_sushi_hellokitty_command(message: types.Message):
   await send_sushi_hellokitty_command(message: types.Message):
 caption ="Погрузитесь в мир необычных вкусов с роллами Хеллоу Китти! Эти кулинарные шедевры подарят вам не только удовольствие, но и улыбку. Каждый ролл — это яркое произведение искусства, где свежайшие ингредиенты гармонично сочетаются с оригинальными соусами. Мы используем только отборный рыбу, креветки и разнообразные овощи, чтобы каждый укус был настоящим праздником для ваших чувств."
 # https://www.youtube.com/watch?v=dQw4w9WgXcQ
+bot.polling()
