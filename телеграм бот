@@ -1,4 +1,4 @@
-import pizzabot
+import telebot
 bot - pizzabot.Pizzabot("API KEY")
 @bot.message_handler(commands=['start'])
 def main(message): 
