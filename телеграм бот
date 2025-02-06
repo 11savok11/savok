@@ -19,22 +19,22 @@ async def handle_pizza_pepperoni_command(message: types.Message):
     caption = "Пицца «Пепперони» – это классическое и одно из самых популярных блюд итальянской кухни. Она отличается аппетитным сочетанием хрустящего теста, ароматного томатного соуса, обильного количества сыра и пикантных пепперони – итальянских колбасок из острой свинины."
 @dp.message_handler(commands=['Pizza_4_Cheese', '1.2'])
 async def send_pizza_4_chesee_command(message: types.Message):
-    await send_pizza_4_chesee_photo(message)
+    await send_pizza_4_chesee_photo(message):
     photo_path = 'pizza_4_chesee.jpg'  
     caption = "Пицца «Четыре сыра» — это так называемая белая пицца, так как в неё не кладут помидоры или томатный соус. Начинку пиццы составляет исключительно сыр: мягкая рикотта, плавящаяся моцарелла, твёрдый ароматный пармезан и голубая горгонзола с плесенью."
 @dp.message_handler(commands=['Pizza_Gavaii', '1.3'])
 async def handle_pizza_Gavaii_command(message: types.Message):
-    await send_pizza_Gavaii_photo(message)
+    await send_pizza_Gavaii_photo(message):
     photo_path = 'pizza_Gavaii.jpg' 
     caption ="Гавайская пицца — это разновидность пиццы, в которой используется сочетание традиционных ингредиентов и ананаса."
 @dp.message_handler(commands=['Pizza_Neapol', '1.4'])
-async def handle_pizza_Neapol_command(message)
-  await send_pizza_Neapol_photo(message: types.Message):
+async def handle_pizza_Neapol_command(message: types.Message):
+  await send_pizza_Neapol_photo(message):
   photo_path = 'pizza_Neapol.jpg' 
   caption ="Неаполитанская пицца — это классическое итальянское блюдо, состоящее из тонкого хрустящего теста, сочной томатной пасты, а также ароматных трав и свежих ингредиентов."
 @dp.message_handler(commands=['Pizza_Femboy', '1.5'])
-async def handle_pizza_Femboy_command(message)
-  await send_pizza_Femboy_photo(message: types.Message):
+async def handle_pizza_Femboy_command(message: types.Message):
+  await send_pizza_Femboy_photo(message):
   photo_path = 'pizza_Femboy.jpg' 
   caption ="В мире, где вкусы и стили пересекаются, приходит пицца, способная покорить сердца — и не только мужчин! Наши фембой-пиццы сочетают в себе изысканный аромат и яркие цвета, удовлетворяя даже самых требовательных гурманов. Представьте себе нежное тесто, как бархат, обволакивающее множество начинок: от классического томатного соуса и моцареллы до уникальных авторских комбинаций с трюфельным маслом и авокадо.."
 @bot.message_handler(func=lambda message: message.text.isdigit())
