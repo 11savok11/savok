@@ -28,12 +28,12 @@ async def handle_pizza_Gavaii_command(message: types.Message):
     photo_path = 'pizza_Gavaii.jpg' 
     caption ="Гавайская пицца — это разновидность пиццы, в которой используется сочетание традиционных ингредиентов и ананаса."
 @dp.message_handler(commands=['Pizza_Neapol', '1.4'])
-async def handle_pizza_Neapol_command(message: types.Message):
+async def handle_pizza_Neapol_command(message)
   await send_pizza_Neapol_photo(message: types.Message):
   photo_path = 'pizza_Neapol.jpg' 
   caption ="Неаполитанская пицца — это классическое итальянское блюдо, состоящее из тонкого хрустящего теста, сочной томатной пасты, а также ароматных трав и свежих ингредиентов."
 @dp.message_handler(commands=['Pizza_Femboy', '1.5'])
-async def handle_pizza_Femboy_command(message: types.Message):
+async def handle_pizza_Femboy_command(message)
   await send_pizza_Femboy_photo(message: types.Message):
   photo_path = 'pizza_Femboy.jpg' 
   caption ="В мире, где вкусы и стили пересекаются, приходит пицца, способная покорить сердца — и не только мужчин! Наши фембой-пиццы сочетают в себе изысканный аромат и яркие цвета, удовлетворяя даже самых требовательных гурманов. Представьте себе нежное тесто, как бархат, обволакивающее множество начинок: от классического томатного соуса и моцареллы до уникальных авторских комбинаций с трюфельным маслом и авокадо.."
@@ -48,44 +48,44 @@ def take_order(message):
 Sushi
 @dp.message_handler(commands=['Sushi_kalifornia', '2.1'])
 async def handle_sushi_kalifornia_command(message: types.Message):
-  await send_sushi_kalifornia_photo(message: types.Message):
+  await send_sushi_kalifornia_photo(message)
  caption ="Погрузитесь в мир кулинарных наслаждений с суши Калифорния! Эти изысканные роллы, наполненные свежайшим лососем, нежным авокадо и хрустящими овощами, станут ярким акцентом вашего обеда или ужина. Каждый кусочек – это симфония вкусов, где морская свежесть встречается с земным уютом. "
 @dp.message_handler(commands=['Sushi_samurai', '2.2'])
 async def handle_sushi_samurai_command(message: types.Message):
-  await send_sushi_samurai_photo(message: types.Message):
+  await send_sushi_samurai_photo(message)
  caption ="В мире гастрономии, где каждый вкус — это уникальная история, роллы "Самурай" представляют собой истинное искусство. Вдохновленные многовековыми традициями японской кухни и современными кулинарными технологиями, наши роллы сияют яркими цветами и насыщенными ароматами."
 @dp.message_handler(commands=['Sushi_savok', '2.3'])
 async def handle_sushi_savok_command(message: types.Message):
-  await send_sushi_savok_photo(message: types.Message):
+  await send_sushi_savok_photo(message)
 caption ="В ритме современных гастрономических ожиданий горячие роллы Савок становятся настоящим открытием для истинных ценителей японской кухни. Нежное сочетание свежайших морепродуктов и ярких овощей вскоре покорит ваше сердце и вкусовые рецепторы. Наша уникальная рецептура, в которой переплетается традиционное искусство приготовления с креативными нотами, предлагает вам насладиться каждой единицей."
 @dp.message_handler(commands=['Sushi_sakemyaki', '2.4'])
 async def handle_sushi_sakemyaki_command(message: types.Message):
-  await send_sushi_sakemyaki_photo(message: types.Message):
+  await send_sushi_sakemyaki_photo(message)
 bot.polling(none_stop=True)
 caption ="Закажите роллы сакэмяки и откройте для себя уникальный мир японской кухни, где каждая деталь вобрала в себя гармонию вкуса и эстетики. Наши роллы — это не просто блюда, а настоящие кулинарные произведения искусства. Сочетая свежие морепродукты, хрустящие овощи и ароматный рис, мы предлагаем вам насладиться идеальным балансом текстур и вкусов."
 @dp.message_handler(commands=['Sushi_hellokitty', '2.5'])
 async def handle_sushi_hellokitty_command(message: types.Message):
-  await send_sushi_hellokitty_photo(message: types.Message):
+  await send_sushi_hellokitty_photo(message)
 caption ="Погрузитесь в мир необычных вкусов с роллами Хеллоу Китти! Эти кулинарные шедевры подарят вам не только удовольствие, но и улыбку. Каждый ролл — это яркое произведение искусства, где свежайшие ингредиенты гармонично сочетаются с оригинальными соусами. Мы используем только отборный рыбу, креветки и разнообразные овощи, чтобы каждый укус был настоящим праздником для ваших чувств."
 # https://www.youtube.com/watch?v=dQw4w9WgXcQ
 @dp.message_handler(commands=['Burger_clasic', '3.1'])
 async def handle_burger_clasic_command(message: types.Message):
-  await send_burger_clasic_photo(message: types.Message):
+  await send_burger_clasic_photo(message)
 caprion ="Классический горячий бутерброд в виде разрезанной круглой булочки, между половинками которой укладывается плоская котлета с дополнительными компонентами."
 @dp.message_handler(commands=['Burger_cheese', '3.2'])
 async def handle_burger_chesse_command(message: types.Message):
-  await send_burger_chesse_photo(message: types.Message):
+  await send_burger_chesse_photo(message)
 caprion ="Чизбургер — это гамбургер с сыром. Традиционно ломтик сыра кладётся поверх мясной котлеты. Сыр обычно добавляют в готовящийся гамбургер незадолго до подачи на стол, что позволяет сыру расплавиться."
 @dp.message_handler(commands=['Burger_big', '3.3'])
 async def handle_burger_big_command(message: types.Message):
-  await send_burger_big_photo(message: types.Message):
+  await send_burger_big_photo(message)
 caprion ="Каждый слой этого увлекательного произведения искусства — это комбинация свежайшего мяса, идеально обжаренного до золотистой корочки, и мягкой булочки, которая словно обнимает начинку. Мы используем только отборные ингредиенты: хрустящий салат, спелые помидоры, сочный огурец и наш секретный соус, который добавляет взрыв вкуса каждому укусу."
 @dp.message_handler(commands=['Burger_vegan', '3.4'])
 async def handle_burger_vegan_command(message: types.Message):
-  await send_burger_vegan_photo(message: types.Message):
+  await send_burger_vegan_photo(message)
 caption ="Наш бургер не только восхитителен на вкус, но и абсолютно полезен для вашего здоровья и окружающей среды. Мы заботимся о планете, выбирая только экологически чистые ингредиенты, без консервантов и добавок, чтобы вам не пришлось переживать о своем выборе."
 @dp.message_handler(commands=['Burger_femboy', '3.5'])
 async def handle_burger_femboy_command(message: types.Message):
-  await send_burger_femboy_photo(message: types.Message):
+  await send_burger_femboy_photo(message)
 caprion ="Наш бургер – это не просто еда, это манифест смелости и любви. Нежная котлета из растительного белка, покрытая ароматным соусом на основе авокадо и лайма, бережно заключена в мягкую булочку, украшенную яркими овощами – свежими помидорами, хрустящим огурчиком и зеленым салатом."
 bot.polling()
