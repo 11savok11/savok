@@ -8,7 +8,7 @@ dp.middleware.setup(LoggingMiddleware())
 @dp.message_handler(commands=['start'])
 def main(message): 
   bot.send_message(message.chat.id, 'Здраствуйте, я телеграмм бот пиццеррии, сделайте заказ из моего списка.')
-@dp.message_handler(func=lambda message: message.text.lower() == 'меню')
+@dp.message_handler(func=lambda message: message.text == 'menu')
 def show_menu(message):
     menu = "1.1. Пеперони\\n1.2. Четыре Сыра\\n1.3. Гавайская\\n1.4. Неальская\\n1.5. Фембойская\\ Напишите номер вашей пиццы для заказа."
     bot.send_message(message.chat.id, menu)
