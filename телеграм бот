@@ -1,19 +1,19 @@
 from aiogram import Bot, Dispatcher, types
-from aiogram.fsm.storage .memory import MemoryStorage
+from aiogram.contrib.middlewares.logging import LoggingMiddleware
 from aiogram.utils import executor
 API_TOKEN =('7465370955:AAFrGvoyI9UTDYotaFwXG_lh8aGvw_zcEW')
 bot = Bot(token=API_TOKEN)
 dp = Dispatcher(bot)
 dp.middleware.setup(LoggingMiddleware())
-@bot.message_handler(commands=['start'])
+@dp.message_handler(commands=['start'])
 def main(message): 
   bot.send_message(message.chat.id, 'Здраствуйте, я телеграмм бот пиццеррии, сделайте заказ из моего списка.')
-@bot.message_handler(func=lambda message: message.text.lower() == 'меню')
+@dp.message_handler(func=lambda message: message.text.lower() == 'меню')
 def show_menu(message):
     menu = "1.1. Пеперони\\n1.2. Четыре Сыра\\n1.3. Гавайская\\n1.4. Неальская\\n1.5. Фембойская\\ Напишите номер вашей пиццы для заказа."
     bot.send_message(message.chat.id, menu)
 @dp.message_handler(commands=['Pizza_margarita', 'margarita'])
-async def send_pizza_margarita_photo(message: types.Message):
+async def handle_pizza_margarita_photo(message: types.Message):
     await send_pizza_margarita_photo(message)
     photo_path = 'pizza_margarita.jpg'  
     caption = "Наши повара готовят пиццу «Маргариту» из томатов и соуса «Помадор». Перед запеканием, всё обильно посыпается сыром «Моцареллой», Поэтому, когда достаете кусок - сыр растягивается на всю длину. Помните, как в мультике про черепашек ниндзя? Вот также будет:)" 
@@ -23,7 +23,7 @@ async def handle_pizza_pepperoni_command(message: types.Message):
     photo_path = 'pizza_pepperoni.jpg'  
     caption = "Пицца «Пепперони» – это классическое и одно из самых популярных блюд итальянской кухни. Она отличается аппетитным сочетанием хрустящего теста, ароматного томатного соуса, обильного количества сыра и пикантных пепперони – итальянских колбасок из острой свинины."
 @dp.message_handler(commands=['Pizza_4_Cheese', '1.2'])
-async def send_pizza_4_chesee_command(message: types.Message):
+async def handle_pizza_4_chesee_command(message: types.Message):
     await send_pizza_4_chesee_photo(message)
     photo_path = 'pizza_4_chesee.jpg'  
     caption = "Пицца «Четыре сыра» — это так называемая белая пицца, так как в неё не кладут помидоры или томатный соус. Начинку пиццы составляет исключительно сыр: мягкая рикотта, плавящаяся моцарелла, твёрдый ароматный пармезан и голубая горгонзола с плесенью."
@@ -42,7 +42,7 @@ async def handle_pizza_Femboy_command(message: types.Message):
   await send_pizza_Femboy_photo(message)
   photo_path = 'pizza_Femboy.jpg' 
   caption ="В мире, где вкусы и стили пересекаются, приходит пицца, способная покорить сердца — и не только мужчин! Наши фембой-пиццы сочетают в себе изысканный аромат и яркие цвета, удовлетворяя даже самых требовательных гурманов. Представьте себе нежное тесто, как бархат, обволакивающее множество начинок: от классического томатного соуса и моцареллы до уникальных авторских комбинаций с трюфельным маслом и авокадо.."
-@bot.message_handler(func=lambda message: message.text.isdigit())
+@dp.message_handler(func=lambda message: message.text.isdigit())
 def take_order(message):
     pizza_choice = int(message.text)
     if pizza_choice in [1.1, 1.2, 1.3, 1.4, 1.5]:
@@ -94,3 +94,4 @@ async def handle_burger_femboy_command(message: types.Message):
   caprion ="Наш бургер – это не просто еда, это манифест смелости и любви. Нежная котлета из растительного белка, покрытая ароматным соусом на основе авокадо и лайма, бережно заключена в мягкую булочку, украшенную яркими овощами – свежими помидорами, хрустящим огурчиком и зеленым салатом."
 bot.polling()
 # https://www.youtube.com/watch?v=dQw4w9WgXcQ
+
