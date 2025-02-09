@@ -17,9 +17,20 @@ async def send_welcome(message: types.Message):
 
 @dp.message_handler(commands=['GO', 'go'])
 async def handle_go_command(message: types.Message):
-    await message.reply("Чтобы посмотреть наше меню, напишите номер пиццы или нажмите на её кнопку.")
+    await message.reply('''Чтобы посмотреть наше меню, напишите номер пиццы или нажмите на её кнопку.
+1.1 - Пицца Маргарита                     
+1.2 - Пицца 4Сыра
+1.3 - Пицца Пепперони
+1.4 - Пицца Фембойчик 
+1.5 - Пицца С Перцом Халапенью
+1.6 - Пицца Сицилийская 
+1.7 - Пицца Мясная
+1.8 - Пицца Вегетарианская
+1.9 - Пицца Бисмарк
+2.0 - Пицца С Лососем
+''')
 
-@dp.message_handler(commands=['Margarita', 'PizzaMargarita'])
+@dp.message_handler(commands=['Margarita', '1.1'])
 async def handle_Margarita_command(message: types.Message):
     await message.reply('Пицца «Маргарита» — типичная неаполитанская пицца, c измельчёнными и очищенными помидорами, моцареллой, свежими листьями базилика и оливковым маслом.')
     await send_Margarita_photo(message)
@@ -31,7 +42,7 @@ async def send_Margarita_photo(message: types.Message):
     with open(photo_path, 'rb') as photo:
         await message.answer_photo(photo, caption=caption)
 
-@dp.message_handler(commands=['4Chesee', 'Pizza4Chesse'])
+@dp.message_handler(commands=['4Chesee', '1.2'])
 async def handle_4Chesee_command(message: types.Message):
     await message.reply('Пицца «Четыре сыра» — это так называемая белая пицца, так как в неё не кладут помидоры или томатный соус. Начинку пиццы составляет исключительно сыр: мягкая рикотта, плавящаяся моцарелла, твёрдый ароматный пармезан и голубая горгонзола с плесенью.')
     await send_4Chesse_photo(message)
@@ -43,7 +54,7 @@ async def send_4Chesee_photo(message: types.Message):
     with open(photo_path, 'rb') as photo:
         await message.answer_photo(photo, caption=caption)
 
-@dp.message_handler(commands=['Pepperoni', 'PizzaPepperoni'])
+@dp.message_handler(commands=['Pepperoni', '1.3'])
 async def handle_Pepperoni_command(message: types.Message):
     await message.reply('Пицца «Пепперони» – это классическое и одно из самых популярных блюд итальянской кухни. Она отличается аппетитным сочетанием хрустящего теста, ароматного томатного соуса, обильного количества сыра и пикантных пепперони – итальянских колбасок из острой свинины.')
     await send_Pepperoni_photo(message)
@@ -55,10 +66,7 @@ async def send_Pepperoni_photo(message: types.Message):
     with open(photo_path, 'rb') as photo:
         await message.answer_photo(photo, caption=caption)
 
-
-
-
-@dp.message_handler(commands=['Femboy', 'PizzaFemboy'])
+@dp.message_handler(commands=['Femboy', '1.4'])
 async def handle_Femboy_command(message: types.Message):
     await message.reply('Пицца «Фембойчик» – это смелое сочетание вкусов, будоражащее чувства и разжигающее воображение. Нежная, как первый рассвет, основа, щедро укрыта сливочным соусом, напоминающим шепот тайны. На ней, словно искры юности, разбросаны кусочки сочной курицы, маринованные в пикантном соусе терияки.')
     await send_Femboy_photo(message)
@@ -70,33 +78,77 @@ async def send_Femboy_photo(message: types.Message):
     with open(photo_path, 'rb') as photo:
         await message.answer_photo(photo, caption=caption)
 
+@dp.message_handler(commands=['Spicy', '1.5'])
+async def handle_Spicy_command(message: types.Message):
+    await message.reply('Раскалённая лава, обжигающий поцелуй, дьявольское искушение – это лишь слабые эпитеты, способные хоть немного передать взрывной характер нашей острой пиццы. Представьте себе тончайшее тесто, обжаренное до хрустящей корочки, словно кокон, скрывающий внутри вулкан страстей. Томатный соус, насыщенный и терпкий, взрывается на языке, предваряя приход огненной эскадрильи перцев халапеньо и серрано.')
+    await send_Spicy_photo(message)
+    
+async def send_Spicy_photo(message: types.Message):
+    photo_path = 'Spicy.jpg'  
+    caption = ''''''
 
+    with open(photo_path, 'rb') as photo:
+        await message.answer_photo(photo, caption=caption)
 
+@dp.message_handler(commands=['Sicilia', '1.6'])
+async def handle_Sicilia_command(message: types.Message):
+    await message.reply('Сицилийская пицца, или сфинчоне, имеет толстое, ноздреватое тесто, ближе к хлебному. В переводе название означает губка.')
+    await send_Spicy_photo(message)
+    
+async def send_Sicilia_photo(message: types.Message):
+    photo_path = 'Sicilia.jpg'  
+    caption = ''''''
 
+    with open(photo_path, 'rb') as photo:
+        await message.answer_photo(photo, caption=caption)
 
+@dp.message_handler(commands=['Beef', '1.7'])
+async def handle_Beef_command(message: types.Message):
+    await message.reply('Насыщенное мясное блюдо для любителей сытной пищи. Чаще всего делается с мясным фаршем, предварительно тушеным с овощами и томатным соусом, и нарезанными колбасками, которые добавляются к фаршу, перед отправкой пиццы в печь. Естественно в составе пиццы есть и томатный соус, моцарелла, томаты черри и зеленая руккола, которой присыпается пицца перед тем, как подается на стол.')
+    await send_Beef_photo(message)
+    
+async def send_Beef_photo(message: types.Message):
+    photo_path = 'Beef.jpg'  
+    caption = ''''''
 
+    with open(photo_path, 'rb') as photo:
+        await message.answer_photo(photo, caption=caption)    
 
+@dp.message_handler(commands=['Vegan', '1.8'])
+async def handle_Vegan_command(message: types.Message):
+    await message.reply('Вегетарианская пицца с множеством свежих овощей. Начинка зависит от сезона: может быть и томатами, и с грибами, и с баклажанами, и со спаржей и даже с тыквой. Или со всем сразу.')
+    await send_Vegan_photo(message)
+    
+async def send_Vegan_photo(message: types.Message):
+    photo_path = 'Vegan.jpg'  
+    caption = ''''''
 
+    with open(photo_path, 'rb') as photo:
+        await message.answer_photo(photo, caption=caption)  
 
+@dp.message_handler(commands=['Bismark', '1.9'])
+async def handle_Bismark_command(message: types.Message):
+    await message.reply('Начинается по традиции с томатного соуса и моцареллы. Но дальше к ним присоединятся ветчина, бекон, жареное яйцо и иногда фасоль.')
+    await send_Bismark_photo(message)
+    
+async def send_Bismark_photo(message: types.Message):
+    photo_path = 'Bismark.jpg'  
+    caption = ''''''
 
+    with open(photo_path, 'rb') as photo:
+        await message.answer_photo(photo, caption=caption)  
 
+@dp.message_handler(commands=['Fish', '2.0'])
+async def handle_Fish_command(message: types.Message):
+    await message.reply('Начинается по традиции с томатного соуса и моцареллы. Но дальше к ним присоединятся ветчина, бекон, жареное яйцо и иногда фасоль.')
+    await send_Fish_photo(message)
+    
+async def send_Fish_photo(message: types.Message):
+    photo_path = 'Fish.jpg'  
+    caption = ''''''
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+    with open(photo_path, 'rb') as photo:
+        await message.answer_photo(photo, caption=caption)  
 
 
 
@@ -112,5 +164,3 @@ async def send_Femboy_photo(message: types.Message):
 
 if __name__ == '__main__':
     executor.start_polling(dp, skip_updates=True)
-# https://www.youtube.com/watch?v=dQw4w9WgXcQ
-
