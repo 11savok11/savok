@@ -36,7 +36,7 @@ async def handle_Margarita_command(message: types.Message):
     await send_Margarita_photo(message)
 
 async def send_Margarita_photo(message: types.Message):
-    photo_path = 'Margarita.jpg'  
+    photo_path = r'C:\Users\savel\Desktop\6.12.24\шаблон бот\images\Margarita.webp'  
     caption = ''''''
     
     with open(photo_path, 'rb') as photo:
@@ -48,7 +48,7 @@ async def handle_4Chesee_command(message: types.Message):
     await send_4Chesse_photo(message)
 
 async def send_4Chesee_photo(message: types.Message):
-    photo_path = '4Chesse.jpg'  
+    photo_path = r'C:\Users\savel\Desktop\6.12.24\шаблон бот\images\4Chesee.jpg'  
     caption = ''''''
     
     with open(photo_path, 'rb') as photo:
@@ -60,7 +60,7 @@ async def handle_Pepperoni_command(message: types.Message):
     await send_Pepperoni_photo(message)
     
 async def send_Pepperoni_photo(message: types.Message):
-    photo_path = 'Pepperoni.jpg'  
+    photo_path = r'C:\Users\savel\Desktop\6.12.24\шаблон бот\images\Pepperoni.jpg'  
     caption = ''''''
 
     with open(photo_path, 'rb') as photo:
@@ -72,7 +72,7 @@ async def handle_Femboy_command(message: types.Message):
     await send_Femboy_photo(message)
     
 async def send_Femboy_photo(message: types.Message):
-    photo_path = 'Femboy.jpg'  
+    photo_path = r'C:\Users\savel\Desktop\6.12.24\шаблон бот\images\Femboy.png' 
     caption = ''''''
 
     with open(photo_path, 'rb') as photo:
@@ -84,7 +84,7 @@ async def handle_Spicy_command(message: types.Message):
     await send_Spicy_photo(message)
     
 async def send_Spicy_photo(message: types.Message):
-    photo_path = 'Spicy.jpg'  
+    photo_path = r'C:\Users\savel\Desktop\6.12.24\шаблон бот\images\Spicy.webp'  
     caption = ''''''
 
     with open(photo_path, 'rb') as photo:
@@ -93,10 +93,10 @@ async def send_Spicy_photo(message: types.Message):
 @dp.message_handler(commands=['Sicilia', '1.6'])
 async def handle_Sicilia_command(message: types.Message):
     await message.reply('Сицилийская пицца, или сфинчоне, имеет толстое, ноздреватое тесто, ближе к хлебному. В переводе название означает губка.')
-    await send_Spicy_photo(message)
+    await send_Sicilia_photo(message)
     
 async def send_Sicilia_photo(message: types.Message):
-    photo_path = 'Sicilia.jpg'  
+    photo_path = r'C:\Users\savel\Desktop\6.12.24\шаблон бот\images\Sicilia.jpg'  
     caption = ''''''
 
     with open(photo_path, 'rb') as photo:
@@ -108,7 +108,7 @@ async def handle_Beef_command(message: types.Message):
     await send_Beef_photo(message)
     
 async def send_Beef_photo(message: types.Message):
-    photo_path = 'Beef.jpg'  
+    photo_path = r'C:\Users\savel\Desktop\6.12.24\шаблон бот\images\Beef.webp'  
     caption = ''''''
 
     with open(photo_path, 'rb') as photo:
@@ -120,7 +120,7 @@ async def handle_Vegan_command(message: types.Message):
     await send_Vegan_photo(message)
     
 async def send_Vegan_photo(message: types.Message):
-    photo_path = 'Vegan.jpg'  
+    photo_path = r'C:\Users\savel\Desktop\6.12.24\шаблон бот\images\Vegan.jpg'  
     caption = ''''''
 
     with open(photo_path, 'rb') as photo:
@@ -132,7 +132,7 @@ async def handle_Bismark_command(message: types.Message):
     await send_Bismark_photo(message)
     
 async def send_Bismark_photo(message: types.Message):
-    photo_path = 'Bismark.jpg'  
+    photo_path = r'C:\Users\savel\Desktop\6.12.24\шаблон бот\images\Bismark.jpg'  
     caption = ''''''
 
     with open(photo_path, 'rb') as photo:
@@ -144,7 +144,7 @@ async def handle_Fish_command(message: types.Message):
     await send_Fish_photo(message)
     
 async def send_Fish_photo(message: types.Message):
-    photo_path = 'Fish.jpg'  
+    photo_path = r'C:\Users\savel\Desktop\6.12.24\шаблон бот\images\Fish.webp' 
     caption = ''''''
 
     with open(photo_path, 'rb') as photo:
