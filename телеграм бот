@@ -1,4 +1,3 @@
-
 from aiogram import Bot, Dispatcher, types
 from aiogram.contrib.middlewares.logging import LoggingMiddleware
 from aiogram.utils import executor
@@ -129,7 +128,7 @@ async def send_Margarita_photo(message: types.Message):
 @dp.message_handler(lambda message: message.text == "Пицца 4Сыра")
 async def handle_4Chesee_command(message: types.Message):
     await message.reply('Пицца «Четыре сыра» — это так называемая белая пицца, так как в неё не кладут помидоры или томатный соус. Начинку пиццы составляет исключительно сыр: мягкая рикотта, плавящаяся моцарелла, твёрдый ароматный пармезан и голубая горгонзола с плесенью.')
-    await send_4Chesse_photo(message)
+    await send_4Chesee_photo(message)
 
 async def send_4Chesee_photo(message: types.Message):
     photo_path = r'C:\Users\savel\Desktop\6.12.24\шаблон бот\images\4Chesee.jpg'  
