@@ -1,3 +1,4 @@
+
 from aiogram import Bot, Dispatcher, types
 from aiogram.contrib.middlewares.logging import LoggingMiddleware
 from aiogram.utils import executor
@@ -35,7 +36,8 @@ async def handle_go_command(message: types.Message):
     keyboard.add(types.KeyboardButton('Пицца Бисмарк'))
     keyboard.add(types.KeyboardButton('Пицца С Лососем'))
     keyboard.add(types.KeyboardButton('Корзина'))
-    keyboard.add(types.KeyboardButton('Очистить корзину')) 
+    keyboard.add(types.KeyboardButton('Очистить корзину'))
+    keyboard.add(types.KeyboardButton('Оплатить')) 
     await message.reply('Пожалуйста, выберите пиццу или другую команду:', reply_markup=keyboard)
 @dp.message_handler(lambda message: message.text == 'Оплатить')
 async def handle_payment_command(message: types.Message):
@@ -44,6 +46,9 @@ async def handle_payment_command(message: types.Message):
 
     await message.reply("Пожалуйста, переведите сумму на указанный номер. После оплаты нажмите 'Я оплатил'.", reply_markup=keyboard)
 
+@dp.message_handler(lambda message: message.text == "Я оплатил")
+async def handle_payment_confirmation(message: types.Message):
+    await message.reply("Спасибо за оплату! Ваш заказ обрабатывается.")
 # Корзина
 @dp.message_handler(lambda message: message.text in ['Корзина', 'Очистить корзину'])
 async def handle_cart_commands(message: types.Message):
