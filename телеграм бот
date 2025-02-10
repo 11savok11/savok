@@ -35,9 +35,15 @@ async def handle_go_command(message: types.Message):
     keyboard.add(types.KeyboardButton('Пицца Бисмарк'))
     keyboard.add(types.KeyboardButton('Пицца С Лососем'))
     keyboard.add(types.KeyboardButton('Корзина'))
-    keyboard.add(types.KeyboardButton('Очистить корзину'))
-    await message.reply('Чтобы посмотреть наше меню, выберите пиццу:', reply_markup=keyboard)
-    await message.reply('Чтобы посмотреть наше меню, выберите пиццу:', reply_markup=keyboard)
+    keyboard.add(types.KeyboardButton('Очистить корзину')) 
+    await message.reply('Пожалуйста, выберите пиццу или другую команду:', reply_markup=keyboard)
+@dp.message_handler(lambda message: message.text == 'Оплатить')
+async def handle_payment_command(message: types.Message):
+    keyboard = types.ReplyKeyboardMarkup(resize_keyboard=True)
+    keyboard.add(types.KeyboardButton('Я оплатил'))
+
+    await message.reply("Пожалуйста, переведите сумму на указанный номер. После оплаты нажмите 'Я оплатил'.", reply_markup=keyboard)
+
 # Корзина
 @dp.message_handler(lambda message: message.text in ['Корзина', 'Очистить корзину'])
 async def handle_cart_commands(message: types.Message):
@@ -51,6 +57,7 @@ async def handle_cart_commands(message: types.Message):
     elif message.text == 'Очистить корзину':
         cart[user_id] = []
         await message.reply('Корзина успешно очищена.')
+
 
 @dp.message_handler(lambda message: message.text in [
     "Пицца Маргарита", "Пицца 4Сыра", "Пицца Пепперони",
