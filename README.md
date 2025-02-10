@@ -5,8 +5,11 @@
 Все очень просто! Пользователь вводит команду или нажимает на кнопку, бот отправляет пользователю данные, пользователь подтверждает свой заказ.
 /start – Запуск бота и отображение главного меню с кнопками.
 Выбор Пицц в меню.
-Оповещения об Акциях и Скидках.
-Оповещения о Доставке.
+К Каждой Пицце Прилагается Картинка С Описанием.
+Для Установки Этого Вам Понадобиться Питон и Библеотека Аиограмм
+
+
+
 
 (ENG)
 Try the bot ------------> @ SavokPizza_Bot <-----------------
@@ -16,5 +19,5 @@ How does it work?
 It's very simple! The user enters a command or clicks a button, the bot sends the data to the user, the user confirms his order.
 /start – The bot starts and displays the main menu with buttons.
 A selection of Pizzas on the menu.
-Notifications about Promotions and Discounts.
-Delivery Alerts
+Each Pizza Comes With A Picture With A Description.
+To Install This, You Will Need Python and An Aiogram Library.
