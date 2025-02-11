@@ -1,23 +1,12 @@
-(Ru) Попробовать бота ------------>   @SavokPizza_Bot <-----------------
-Данный Telegram-бот предоставляет возможность просмотра и заказа пиццы на дом при помощи ввода или нажатия кнопок.
 
-Как это работает?
-Все очень просто! Пользователь вводит команду или нажимает на кнопку, бот отправляет пользователю данные, пользователь подтверждает свой заказ.
-/start – Запуск бота и отображение главного меню с кнопками.
-Выбор Пицц в меню.
-К Каждой Пицце Прилагается Картинка С Описанием.
-Для Установки Этого Вам Понадобиться Питон и Библеотека Аиограмм
+Данный Telegram-бот предоставляет возможность пиццы и выполняет запросы на основе пользовательского ввода. Бот укоплектован фотографиями к каждой пицце, оплатой, и большим меню.
 
+** Попробовать Бота Можно Тут**
+[@tg currency exchange bot] (https://web.telegram.org/k/#@SavokPizza_Bot)
 
------------------>   https://disk.yandex.ru/d/BJy3JF1onHUfJw       <----------------- Установка| installation
+##  Основные команды и кнопки
 
-(ENG)
-Try the bot ------------> @ SavokPizza_Bot <-----------------
-This Telegram bot provides the ability to view and order pizza at home by typing or pressing buttons.
-
-How does it work?
-It's very simple! The user enters a command or clicks a button, the bot sends the data to the user, the user confirms his order.
-/start – The bot starts and displays the main menu with buttons.
-A selection of Pizzas on the menu.
-Each Pizza Comes With A Picture With A Description.
-To Install This, You Will Need Python and An Aiogram Library.
+**/start** - Запуск Бота.
+**/go** - Открытие Меню С Кнопками, пользователь нажимает на кнопку /go и бот открывает ему меню с кнопками.
+**/очистить корзину** - Очистить Корзину, пользователь выбрал не ту пиццу, нажимает на кнопку и его корзина очищается.
+**/оплатить** - Оплатить Свой Заказ, пользователь выбрал пиццу по вкусу и бот высылает ему счет на оплату.
