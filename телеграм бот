@@ -43,14 +43,15 @@ async def handle_go_command(message: types.Message):
 async def handle_payment_command(message: types.Message):
     keyboard = types.ReplyKeyboardMarkup(resize_keyboard=True)
     keyboard.add(types.KeyboardButton('Я оплатил'))
+    keyboard.add(types.KeyboardButton('Назад'))  
 
-    await message.reply("Пожалуйста, переведите сумму на указанный номер. 4100119011003711, После оплаты нажмите 'Я оплатил'.", reply_markup=keyboard)
-
+    await message.reply("Пожалуйста, переведите сумму на указанный номер. После оплаты нажмите 'Я оплатил'.", reply_markup=keyboard)
 
 @dp.message_handler(lambda message: message.text == "Я оплатил")
 async def handle_payment_confirmation(message: types.Message):
     await message.reply("Спасибо за оплату! Ваш заказ обрабатывается.")
-    await bot.send_message(message.chat.id, "Диалог завершен, ждите доставки пиццы,идите нахуй.", reply_markup=types.ReplyKeyboardRemove())
+    await dp.current_state(user=message.from_user.id).finish()
+    await message.reply("Диалог завершен.", reply_markup=types.ReplyKeyboardRemove())  # Убираем клавиатуру
 
 # Корзина
 @dp.message_handler(lambda message: message.text in ['Корзина', 'Очистить корзину'])
