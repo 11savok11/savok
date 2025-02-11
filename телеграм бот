@@ -17,9 +17,10 @@ cart = {}
 # Команда /start
 @dp.message_handler(commands=['start'])
 async def send_welcome(message: types.Message):
-    await message.reply("Здравствуйте, я телеграмм бот пиццеррии, сделайте заказ из моего списка.' при помощи команды 'GO'.")
+    user_name = message.from_user.first_name or "гость"
+    await message.reply(f'Добро пожаловать в нашу пиццерию, {user_name} Мы рады вас видеть и надеемся, что вы получите удовольствие от наших пицц, вы можете их выбрать при помощи команды /menu')
 
-@dp.message_handler(commands=['GO', 'go'])
+@dp.message_handler(commands=['Menu', 'menu'])
 # Кнопки
 # Добавьте другие кнопки по необходимости
 async def handle_go_command(message: types.Message):
@@ -42,16 +43,15 @@ async def handle_go_command(message: types.Message):
 async def handle_payment_command(message: types.Message):
     keyboard = types.ReplyKeyboardMarkup(resize_keyboard=True)
     keyboard.add(types.KeyboardButton('Я оплатил'))
-    keyboard.add(types.KeyboardButton('Назад'))  
 
-    await message.reply("Пожалуйста, переведите сумму на указанный номер. После оплаты нажмите 'Я оплатил'.", reply_markup=keyboard)
+    await message.reply("Пожалуйста, переведите сумму на указанный номер. 4100119011003711, После оплаты нажмите 'Я оплатил'.", reply_markup=keyboard)
+
 
 @dp.message_handler(lambda message: message.text == "Я оплатил")
 async def handle_payment_confirmation(message: types.Message):
     await message.reply("Спасибо за оплату! Ваш заказ обрабатывается.")
-@dp.message_handler(lambda message: message.text == 'Назад')
-async def handle_back_button(message: types.Message):
-    await handle_go_command(message)
+    await bot.send_message(message.chat.id, "Диалог завершен, ждите доставки пиццы,идите нахуй.", reply_markup=types.ReplyKeyboardRemove())
+
 # Корзина
 @dp.message_handler(lambda message: message.text in ['Корзина', 'Очистить корзину'])
 async def handle_cart_commands(message: types.Message):
