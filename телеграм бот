@@ -1,4 +1,4 @@
-from aiogram import Bot, Dispatcher, F
+from aiogram import Bot, Dispatcher, F, types
 import asyncio
 from aiogram.filters.command import Command
 from aiogram.types import (
@@ -20,6 +20,7 @@ from pathlib import Path
 # Конфигурация
 class Config:
     API_TOKEN = '7465370955:AAFrGvoyI9UTDYotaFwXG_lh8aGvw_zcEWA'
+    ADMIN_IDS = [1217835656] # ID администратора
     IMAGES_PATH = os.path.join(os.path.dirname(__file__), 'images')
     DELIVERY_TIME = 45  # минут
     CARD_NUMBER = "1234 5678 9012 3456"
@@ -216,6 +217,7 @@ def get_payment_keyboard() -> InlineKeyboardMarkup:
             ]
         ]
     )
+
 def get_remove_item_keyboard(order: Order) -> InlineKeyboardMarkup:
     buttons = []
     for i, item in enumerate(order.items):
@@ -250,6 +252,29 @@ async def send_welcome(message: Message) -> None:
         logger.error(f"Ошибка в команде start: {e}")
         await message.answer("❌ Произошла ошибка. Пожалуйста, попробуйте позже.")
 
+
+
+
+# админ панель
+
+@dp.message(Command("admin"))
+async def admin_panel(message: types.Message): 
+    "Меню администратора"
+    print(f"Текущий User ID: {message.from_user.id}")  # Отладка
+    print(f"ADMIN IDS: {Config.ADMIN_IDS}")  # Отладка, если использовать из класса конфигурации
+
+    if message.from_user.id not in Config.ADMIN_IDS:
+        await message.answer("У вас нет прав для доступа к админ-панели.")
+        return
+
+    keyboard = InlineKeyboardMarkup(
+        inline_keyboard=[
+            [InlineKeyboardButton(text="Сообщить о начале выполнения заказа", callback_data="startpizza")],
+            [InlineKeyboardButton(text="Сообщить о выезде курьера к клиенту", callback_data="devilery")],
+            [InlineKeyboardButton(text="Сообщить о прибытии курьера", callback_data="devileryhome")],
+        ]
+    )
+    await message.answer("👨‍💻 Добро пожаловать в админ-панель. Выберите действие:", reply_markup=keyboard)
 @dp.message(Command("menu"))
 async def show_menu(message: Message) -> None:
     try:
@@ -343,7 +368,7 @@ async def handle_payment(callback: CallbackQuery) -> None:
     except Exception as e:
         logger.error(f"Ошибка при оплате: {e}")
         await callback.answer("❌ Произошла ошибка", show_alert=True)
-        
+
 @dp.callback_query(F.data == 'confirm_payment')
 async def handle_payment_confirmation(callback: CallbackQuery) -> None:
     try:
@@ -358,33 +383,9 @@ async def handle_payment_confirmation(callback: CallbackQuery) -> None:
             reply_markup=keyboard
         )
         await callback.answer("✅ Оплата подтверждена!")
-
-        # Ждем 1 минуту
-        await asyncio.sleep(60)
-        await callback.message.answer("🍕 Пиццу готовят.")
-        
-        # Ждем еще 1 минуту
-        await asyncio.sleep(60)
-        await callback.message.answer("🚚 Пиццу передали курьеру.Телефон для связи с курьером +79501941")
-
-        await asyncio.sleep(60)
-        await callback.message.answer("Курьер прибыл к вам!")
-        
     except Exception as e:
         logger.error(f"Ошибка при подтверждении оплаты: {e}")
         await callback.answer("Произошла ошибка. Попробуйте еще раз.", show_alert=True)
-
-# Убедитесь, что у Вас нет дублирующихся обработчиков
-
-
-
-
-
-
-
-
-
-
 
 @dp.callback_query(F.data.in_(['view_cart', 'clear_cart']))
 async def handle_cart_commands(callback: CallbackQuery) -> None:
