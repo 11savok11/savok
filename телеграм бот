@@ -20,7 +20,7 @@ from pathlib import Path
 # Конфигурация
 class Config:
     API_TOKEN = '7465370955:AAFrGvoyI9UTDYotaFwXG_lh8aGvw_zcEWA'
-    ADMIN_IDS = [1217835656] # ID администратора
+    ADMIN_IDS = [1217835656, 7146950990] # ID администратора
     IMAGES_PATH = os.path.join(os.path.dirname(__file__), 'images')
     DELIVERY_TIME = 45  # минут
     CARD_NUMBER = "1234 5678 9012 3456"
@@ -272,6 +272,7 @@ async def admin_panel(message: types.Message):
             [InlineKeyboardButton(text="Сообщить о начале выполнения заказа", callback_data="startpizza")],
             [InlineKeyboardButton(text="Сообщить о выезде курьера к клиенту", callback_data="devilery")],
             [InlineKeyboardButton(text="Сообщить о прибытии курьера", callback_data="devileryhome")],
+            [InlineKeyboardButton(text="Показать все заказы в обработке", callback_data="show_orders")] 
         ]
     )
     await message.answer("👨‍💻 Добро пожаловать в админ-панель. Выберите действие:", reply_markup=keyboard)
@@ -380,7 +381,7 @@ async def handle_payment_confirmation(callback: CallbackQuery) -> None:
             "✅ Спасибо за оплату! Ваш заказ принят в обработку.\n"
             "🕒 Примерное время доставки: 45-60 минут.\n"
             "🍕 Желаете заказать что-то еще?",
-            reply_markup=keyboard
+            reply_markup=None  # Убираем клавиатуру
         )
         await callback.answer("✅ Оплата подтверждена!")
     except Exception as e:
@@ -532,3 +533,4 @@ if __name__ == '__main__':
         logger.error(f"❌ Критическая ошибка: {e}")
     finally:
         logger.info("🔚 Завершение работы бота")
+
