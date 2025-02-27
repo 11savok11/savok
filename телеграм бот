@@ -20,7 +20,7 @@ from pathlib import Path
 # Конфигурация
 class Config:
     API_TOKEN = '7465370955:AAFrGvoyI9UTDYotaFwXG_lh8aGvw_zcEWA'
-    ADMIN_IDS = [1217835656, 7146950990] # ID администратора
+    ADMIN_IDS = [1217835656] # ID администратора
     IMAGES_PATH = os.path.join(os.path.dirname(__file__), 'images')
     DELIVERY_TIME = 45  # минут
     CARD_NUMBER = "1234 5678 9012 3456"
@@ -257,21 +257,38 @@ async def send_welcome(message: Message) -> None:
 
 # админ панель
 
-@dp.message(Command("admin"))
-async def admin_panel(message: types.Message): 
-    @dp.callback_query_handler(lambda c: c.data in ["startpizza", "devilery", "devileryhome", "show_orders"])
-    async def handle_callback_query(callback_query: types.CallbackQuery):
-        if callback_query.data == "startpizza":
-            await bot.send_message(callback_query.from_user.id, "Вы сообщили о начале выполнения заказа.")
-        elif callback_query.data == "devilery":
-            await bot.send_message(callback_query.from_user.id, "Курьер выехал к клиенту.")
-        elif callback_query.data == "devileryhome":
-            await bot.send_message(callback_query.from_user.id, "Курьер прибыл к клиенту.")
-        elif callback_query.data == "show_orders":
-            await bot.send_message(callback_query.from_user.id, "Вот все заказы в обработке.")
+keyboard = types.InlineKeyboardMarkup(inline_keyboard=[
+    [
+        types.InlineKeyboardButton(text="Начать выполнение заказа", callback_data="startpizza"),
+        types.InlineKeyboardButton(text="Курьер выехал", callback_data="devilery")
+    ],
+    [
+        types.InlineKeyboardButton(text="Курьер прибыл", callback_data="devileryhome"),
+        types.InlineKeyboardButton(text="Показать заказы", callback_data="show_orders")
+    ]
+])
 
+async def admin_panel(message: types.Message):
     await message.answer("👨‍💻 Добро пожаловать в админ-панель. Выберите действие:", reply_markup=keyboard)
-@dp.message(Command("menu"))
+
+async def handle_callback_query(callback_query: types.CallbackQuery):
+    if callback_query.data == "startpizza":
+        await bot.send_message(callback_query.from_user.id, "Вы сообщили о начале выполнения заказа.")
+    elif callback_query.data == "devilery":
+        await bot.send_message(callback_query.from_user.id, "Курьер выехал к клиенту.")
+    elif callback_query.data == "devileryhome":
+        await bot.send_message(callback_query.from_user.id, "Курьер прибыл к клиенту.")
+    elif callback_query.data == "show_orders":
+        await bot.send_message(callback_query.from_user.id, "Вот все заказы в обработке.")
+    
+    await callback_query.answer()  # Подтверждение обработки колбэка
+
+# Регистрация обработчиков
+dp.message.register(admin_panel, Command("admin"))
+dp.callback_query.register(handle_callback_query, lambda c: c.data in ["startpizza", "devilery", "devileryhome", "show_orders"])
+
+
+dp.message(Command("menu"))
 async def show_menu(message: Message) -> None:
     try:
         keyboard = get_main_keyboard()
