@@ -1,4 +1,4 @@
-from aiogram import Bot, Dispatcher, F, types
+from aiogram import Dispatcher, Bot, F, types
 import asyncio
 from aiogram.filters.command import Command
 from aiogram.types import (
@@ -259,22 +259,17 @@ async def send_welcome(message: Message) -> None:
 
 @dp.message(Command("admin"))
 async def admin_panel(message: types.Message): 
-    "Меню администратора"
-    print(f"Текущий User ID: {message.from_user.id}")  # Отладка
-    print(f"ADMIN IDS: {Config.ADMIN_IDS}")  # Отладка, если использовать из класса конфигурации
+    @dp.callback_query_handler(lambda c: c.data in ["startpizza", "devilery", "devileryhome", "show_orders"])
+    async def handle_callback_query(callback_query: types.CallbackQuery):
+        if callback_query.data == "startpizza":
+            await bot.send_message(callback_query.from_user.id, "Вы сообщили о начале выполнения заказа.")
+        elif callback_query.data == "devilery":
+            await bot.send_message(callback_query.from_user.id, "Курьер выехал к клиенту.")
+        elif callback_query.data == "devileryhome":
+            await bot.send_message(callback_query.from_user.id, "Курьер прибыл к клиенту.")
+        elif callback_query.data == "show_orders":
+            await bot.send_message(callback_query.from_user.id, "Вот все заказы в обработке.")
 
-    if message.from_user.id not in Config.ADMIN_IDS:
-        await message.answer("У вас нет прав для доступа к админ-панели.")
-        return
-
-    keyboard = InlineKeyboardMarkup(
-        inline_keyboard=[
-            [InlineKeyboardButton(text="Сообщить о начале выполнения заказа", callback_data="startpizza")],
-            [InlineKeyboardButton(text="Сообщить о выезде курьера к клиенту", callback_data="devilery")],
-            [InlineKeyboardButton(text="Сообщить о прибытии курьера", callback_data="devileryhome")],
-            [InlineKeyboardButton(text="Показать все заказы в обработке", callback_data="show_orders")] 
-        ]
-    )
     await message.answer("👨‍💻 Добро пожаловать в админ-панель. Выберите действие:", reply_markup=keyboard)
 @dp.message(Command("menu"))
 async def show_menu(message: Message) -> None:
@@ -533,4 +528,3 @@ if __name__ == '__main__':
         logger.error(f"❌ Критическая ошибка: {e}")
     finally:
         logger.info("🔚 Завершение работы бота")
-
