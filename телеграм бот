@@ -19,7 +19,7 @@ from pathlib import Path
 
 # Конфигурация
 class Config:
-    API_TOKEN = '7465370955:AAFrGvoyI9UTDYotaFwXG_lh8aGvw_zcEWA'
+    API_TOKEN = ''
     ADMIN_IDS = [1217835656] # ID администратора
     IMAGES_PATH = os.path.join(os.path.dirname(__file__), 'images')
     DELIVERY_TIME = 45  # минут
