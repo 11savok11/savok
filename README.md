@@ -29,3 +29,4 @@
 - **[https://disk.yandex.ru/d/OpkCevAJsXVytQ](https://disk.yandex.ru/d/oWxQltoo48jTlA)**
 - В архиве с папкой уже установленна библеотека, aiogramm повторно её устанавливать не нужно.
 - Поменяйте путь к картинкам на свой, иначе бот не будет отправлять картинки.
+<img width="618" height="833" alt="1" src="https://github.com/user-attachments/assets/e3205e7a-6309-4197-8ec4-8d40e470aeb3" />
